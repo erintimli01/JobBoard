@@ -1,29 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using JobBoard.Models;
 using System.Collections.Generic;
 
-namespace ToDoList.Controllers
+namespace JobBoard.Controllers
 {
-  public class ItemsController : Controller
+  public class JobsController : Controller
   {
 
-    [HttpGet("/items")]
+    [HttpGet("/jobs")]
     public ActionResult Index()
     {
-      List<Item> allItems = Item.GetAll();
-      return View(allItems);
+      List<Job> allJobs = Job.GetAll();
+      return View(allJobs);
     }
 
-    [HttpGet("/items/new")]
+    [HttpGet("/jobs/new")]
     public ActionResult CreateForm()
     {
       return View();
     }
 
-    [HttpPost("/items")]
+    [HttpPost("/jobs")]
     public ActionResult Create(string description)
     {
-      Item myItem = new Item(description);
+      Job myJob = new Job(description);
       return RedirectToAction("Index");
     }
 
